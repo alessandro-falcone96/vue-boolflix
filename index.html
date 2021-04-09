@@ -34,6 +34,16 @@
 
           <div class="movieCard" v-for="oggetto in film[0]">
             <img :src="link + oggetto.poster_path" :alt="oggetto.original_title">
+
+            <div class="description">
+
+              <h3>Titolo: <span>{{oggetto.title}}</span></h3>
+              <h3>Titolo Originale: <span>{{oggetto.original_title}}</span></h3>
+              <h3>Voto: <span>{{oggetto.vote_average}}</span></h3>
+              <h3>Overview: <span>{{oggetto.overview}}</span></h3>
+
+            </div>
+
           </div>
 
         </div>
