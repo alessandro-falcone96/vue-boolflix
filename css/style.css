@@ -16,14 +16,14 @@ header .containerHeader{
   height: 100%;
   margin: auto;
 }
-header .containerHeader h1{
-  color: red;
+header img{
+  height: 70%;
 }
-header .containerHeader input{
+header input{
   padding: 5px;
   width: 200px;
 }
-header .containerHeader button{
+header button{
   height: 29px;
   padding: 2px 3px;
 }
@@ -36,6 +36,7 @@ main .containerMain{
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  padding: 50px 0px 100px 0px;
 }
 
 main .containerMain .movieCard{
