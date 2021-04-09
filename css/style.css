@@ -3,7 +3,47 @@
   padding: 0;
   box-sizing: border-box;
 }
+header{
+  background-color: black;
+  height: 10vh;
+}
+header .containerHeader{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  height: 100%;
+  margin: auto;
+}
+header .containerHeader h1{
+  color: red;
+}
+header .containerHeader input{
+  padding: 5px;
+  width: 200px;
+}
+main{
+  background-color: #383838;
+  min-height: 90vh;
+}
+main .containerMain{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
+main .containerMain .movieCard{
+  width: 200px;
+  height: 300px;
+  border: 1px solid white;
+  margin: 10px 5px;
+}
+
+main .containerMain .movieCard img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 /* Media Query */
 
@@ -16,5 +56,5 @@
 }
 
 @media screen and (max-width: 767px) {
-  
+
 }

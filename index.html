@@ -11,6 +11,28 @@
   </head>
   <body>
 
+    <header>
+      <div class="containerHeader">
+
+        <h1>BOOLFIX</h1>
+
+        <input type="text" name="" value="" placeholder="Inserisci titolo">
+
+      </div>
+    </header>
+
+    <main id="app">
+
+      <div class="containerMain">
+
+        <div class="movieCard" v-for="oggetto in film[0]">
+          <img :src="link + oggetto.poster_path" alt="">
+        </div>
+
+      </div>
+
+    </main>
+
     <!-- Vue (Development Version) -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <!-- Axios -->
