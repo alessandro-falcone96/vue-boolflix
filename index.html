@@ -11,27 +11,36 @@
   </head>
   <body>
 
-    <header>
-      <div class="containerHeader">
+    <div id="app" class="cont">
 
-        <h1>BOOLFIX</h1>
+      <header>
+        <div class="containerHeader">
 
-        <input type="text" name="" value="" placeholder="Inserisci titolo">
+          <h1>BOOLFIX</h1>
 
-      </div>
-    </header>
+          <div class="">
 
-    <main id="app">
+            <input type="text" name="" value="" placeholder="Inserisci titolo" v-model="queryInput" @keyup.13="search">
+            <button type="button" name="button" @click="search">Cerca</button>
 
-      <div class="containerMain">
+          </div>
 
-        <div class="movieCard" v-for="oggetto in film[0]">
-          <img :src="link + oggetto.poster_path" alt="">
+        </div>
+      </header>
+
+      <main>
+
+        <div class="containerMain">
+
+          <div class="movieCard" v-for="oggetto in film[0]">
+            <img :src="link + oggetto.poster_path" :alt="oggetto.original_title">
+          </div>
+
         </div>
 
-      </div>
+      </main>
 
-    </main>
+    </div>
 
     <!-- Vue (Development Version) -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
