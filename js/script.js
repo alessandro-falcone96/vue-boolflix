@@ -8,6 +8,9 @@ var app = new Vue (
       link: "https://image.tmdb.org/t/p/original/",
       queryInput: "",
       titoloPrincipale: "",
+      flagLink: "https://www.countryflags.io/",
+      flagLink2: "/shiny/64.png"
+
       // filmPreferiti: ["Iron Man", "L'Incredibile Hulk", "Iron Man 2", "Thor", "Captain America - Il Primo Vendicatore", "The Avengers", "Iron Man 3", " Thor: The Dark World", "Captain America: The Winter Soldier", "Guardiani della galassia", "Avengers: Age of Ultron", "Ant-Man", "Captain America: Civil War", "Doctor Strange", "Guardiani della Galassia Vol 2", "Spider-Man: Homecoming", "Thor: Ragnarok", "Black Panther", "Avengers: Infinity War", "Ant-Man and the Wasp", "Captain Marvel", "Avengers: Endgame", "Spider-Man: Far From Home"]
     },
     methods: {

@@ -45,17 +45,19 @@ main .containerMain{
 
 main .containerMain .movieCard{
   width: 200px;
-  height: 350px;
+  height: 300px;
   border: 1px solid white;
   margin: 10px 5px;
   position: relative;
 }
-
-main .containerMain .movieCard img{
+main .containerMain .movieCard img.poster{
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: .7s ease;
+}
+main .containerMain .movieCard img.fake{
+  object-fit: contain;
 }
 main .description{
   color: white;
@@ -70,10 +72,17 @@ main .description{
   transition: .7s ease;
   padding: 10px;
 }
+main .description div.len-flag{
+  display: flex;
+  align-items: center;
+}
+main .description div.len-flag img.bandiera{
+  margin-left: 15px;
+}
 main .description i{
   color: yellow;
 }
-.movieCard:hover img{
+.movieCard:hover img.poster{
   opacity: 0;
 }
 .movieCard:hover .description{

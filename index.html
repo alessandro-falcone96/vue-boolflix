@@ -35,13 +35,18 @@
         <div class="containerMain">
 
           <div class="movieCard" v-for="oggetto in film[0]">
-            <img :src="link + oggetto.poster_path" :alt="oggetto.original_title">
+            <img class="poster fake" v-if="oggetto.poster_path == null" src="nonDisponibile.png">
+            <img class="poster" v-else :src="link + oggetto.poster_path" :alt="oggetto.original_title">
 
             <div class="description">
 
               <h3>Titolo: <span>{{oggetto.title}}</span></h3>
               <h3>Titolo Originale: <span>{{oggetto.original_title}}</span></h3>
-              <h3>Lingua: <span>{{oggetto.original_language}}</span></h3>
+              <div class="len-flag">
+                <h3>Lingua:</h3>
+                <img v-if="oggetto.original_language == 'en'" class="bandiera" :src="flagLink + 'US' + flagLink2" alt="">
+                <img v-else class="bandiera" :src="flagLink + oggetto.original_language + flagLink2" alt="">
+              </div>
               <h3>Voto: <span v-for="n in oggetto.vote_average"><i class="fas fa-star"></i></span><span v-for="n in (5 - oggetto.vote_average)"><i class="far fa-star"></i></span></h3>
               <h3>Overview: <span>{{oggetto.overview}}</span></h3>
 
