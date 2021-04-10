@@ -32,15 +32,19 @@ main{
   background-color: #383838;
   min-height: 90vh;
 }
+main h1{
+  text-align: center;
+  padding-top: 30px;
+}
 main .containerMain{
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 50px 0px 100px 0px;
+  padding: 30px 0px 100px 0px;
 }
 
 main .containerMain .movieCard{
-  width: 250px;
+  width: 200px;
   height: 350px;
   border: 1px solid white;
   margin: 10px 5px;
@@ -65,6 +69,9 @@ main .description{
   overflow: auto;
   transition: .7s ease;
   padding: 10px;
+}
+main .description i{
+  color: yellow;
 }
 .movieCard:hover img{
   opacity: 0;
