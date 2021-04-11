@@ -4,61 +4,48 @@
     <meta charset="utf-8">
     <!-- Fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <!-- Css -->
     <link rel="stylesheet" href="css/style.css">
     <!-- Title -->
-    <title>Vue Boolfix</title>
+    <title>Vue Boolfix Main Page</title>
   </head>
   <body>
 
-    <div id="app" class="cont">
+    <header>
+      <div class="containerHeader">
 
-      <header>
-        <div class="containerHeader">
+        <img src="boolflix.png" alt="">
 
-          <img src="boolflix.png" alt="">
+      </div>
+    </header>
 
-          <div class="">
+    <main>
 
-            <input type="text" name="" value="" placeholder="Inserisci titolo" v-model="queryInput" @keyup.13="search">
-            <button type="button" name="button" @click="search">Cerca</button>
+      <div id="app2" class="containerCentrale">
 
-          </div>
+        <h1>Chi vuole guardare Boolflix?</h1>
 
-        </div>
-      </header>
+        <div class="containerProfili">
 
-      <main>
-
-        <h1>{{titoloPrincipale}}</h1>
-
-        <div class="containerMain">
-
-          <div class="movieCard" v-for="oggetto in film[0]">
-            <img class="poster fake" v-if="oggetto.poster_path == null" src="nonDisponibile.png">
-            <img class="poster" v-else :src="link + oggetto.poster_path" :alt="oggetto.original_title">
-
-            <div class="description">
-
-              <h3>Titolo: <span>{{oggetto.title}}</span></h3>
-              <h3>Titolo Originale: <span>{{oggetto.original_title}}</span></h3>
-              <div class="len-flag">
-                <h3>Lingua:</h3>
-                <img v-if="oggetto.original_language == 'en'" class="bandiera" :src="flagLink + 'US' + flagLink2" alt="">
-                <img v-else class="bandiera" :src="flagLink + oggetto.original_language + flagLink2" alt="">
-              </div>
-              <h3>Voto: <span v-for="n in oggetto.vote_average"><i class="fas fa-star"></i></span><span v-for="n in (5 - oggetto.vote_average)"><i class="far fa-star"></i></span></h3>
-              <h3>Overview: <span>{{oggetto.overview}}</span></h3>
-
-            </div>
-
+          <div v-for="(item, index) in fotoProfilo">
+            <a href="mainpage.html"><img :src="item" alt="" @click="activeImage(index)"></a>
+            <h4>{{nomiProfilo[index]}}</h4>
           </div>
 
         </div>
 
-      </main>
+        <div class="containerButton">
 
-    </div>
+          <button type="button">Gestisci i profili</button>
+
+        </div>
+
+      </div>
+
+    </main>
 
     <!-- Vue (Development Version) -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>

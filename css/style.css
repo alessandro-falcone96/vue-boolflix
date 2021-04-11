@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 /* Header */
 header{
@@ -19,92 +20,67 @@ header .containerHeader{
 header img{
   height: 70%;
 }
-header input{
-  padding: 5px;
-  width: 200px;
-}
-header button{
-  height: 29px;
-  padding: 2px 3px;
-}
+
 /* Main */
 main{
-  background-color: #383838;
+  background-color: #181818;
   min-height: 90vh;
+  position: relative;
+}
+main .containerCentrale{
+  width: 80%;
+  height: 50vh;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
 }
 main h1{
   text-align: center;
-  padding-top: 30px;
+  color: white;
+  padding: 30px 0px 50px 0px;
+  font-size: 50px;
+  font-weight: normal;
 }
-main .containerMain{
+main .containerProfili{
+  display: flex;
+  justify-content: space-around;
+}
+main a{
+  display: inline-block;
+}
+main .containerProfili div:hover img{
+  border: 2px solid white;
+}
+main .containerProfili div:hover h4{
+  color: white;
+}
+main img{
+  height: 150px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+main h4{
+  text-align: center;
+  color: grey;
+  padding-top: 5px;
+}
+main .containerButton{
+  margin-top: 50px;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  padding: 30px 0px 100px 0px;
 }
-
-main .containerMain .movieCard{
-  width: 200px;
-  height: 300px;
-  border: 1px solid white;
-  margin: 10px 5px;
-  position: relative;
+main button{
+  padding: 10px 25px;
+  color: grey;
+  border: 1px solid grey;
+  background-color: #181818;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 15px;
+  letter-spacing: 2px;
 }
-main .containerMain .movieCard img.poster{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: .7s ease;
-}
-main .containerMain .movieCard img.fake{
-  object-fit: contain;
-}
-main .description{
+main button:hover{
   color: white;
-  background-color: black;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  overflow: auto;
-  transition: .7s ease;
-  padding: 10px;
-}
-main .description div.len-flag{
-  display: flex;
-  align-items: center;
-}
-main .description div.len-flag img.bandiera{
-  margin-left: 15px;
-}
-main .description i{
-  color: yellow;
-}
-.movieCard:hover img.poster{
-  opacity: 0;
-}
-.movieCard:hover .description{
-  opacity: 1;
-}
-
-main .containerMain .movieCard .description h3{
-  font-weight: bold;
-  padding: 3px 0px;
-}
-main .containerMain .movieCard .description span{
-  font-weight: lighter;
-  font-size: 18px;
-}
-
-/* Media Query */
-@media screen and (min-width: 992px) and (max-width: 1199px) {
-
-}
-@media screen and (min-width: 768px) and (max-width: 991px) {
-
-}
-@media screen and (max-width: 767px) {
-
+  border: 1px solid white;
 }
