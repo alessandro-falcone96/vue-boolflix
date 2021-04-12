@@ -7,8 +7,7 @@ var app = new Vue (
       queryInput: "",
       titoloPrincipale: "",
       flagLink: "https://www.countryflags.io/",
-      flagLink2: "/shiny/48.png"
-
+      flagLink2: "/shiny/48.png",
       // filmPreferiti: ["Iron Man", "L'Incredibile Hulk", "Iron Man 2", "Thor", "Captain America - Il Primo Vendicatore", "The Avengers", "Iron Man 3", " Thor: The Dark World", "Captain America: The Winter Soldier", "Guardiani della galassia", "Avengers: Age of Ultron", "Ant-Man", "Captain America: Civil War", "Doctor Strange", "Guardiani della Galassia Vol 2", "Spider-Man: Homecoming", "Thor: Ragnarok", "Black Panther", "Avengers: Infinity War", "Ant-Man and the Wasp", "Captain Marvel", "Avengers: Endgame", "Spider-Man: Far From Home"]
     },
     methods: {
@@ -27,7 +26,6 @@ var app = new Vue (
 
             var oggetto = risposta.data.results;
             this.film.push(oggetto);
-            // console.log(this.film);
 
             // Trasformazione voto da 10 a 5
             let voto = null;
