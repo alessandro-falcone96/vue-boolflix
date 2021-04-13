@@ -7,7 +7,7 @@ var app = new Vue (
       queryInput: "",
       titoloPrincipale: "",
       flagLink: "https://www.countryflags.io/",
-      flagLink2: "/shiny/48.png",
+      flagLink2: "/shiny/32.png",
       // filmPreferiti: ["Iron Man", "L'Incredibile Hulk", "Iron Man 2", "Thor", "Captain America - Il Primo Vendicatore", "The Avengers", "Iron Man 3", " Thor: The Dark World", "Captain America: The Winter Soldier", "Guardiani della galassia", "Avengers: Age of Ultron", "Ant-Man", "Captain America: Civil War", "Doctor Strange", "Guardiani della Galassia Vol 2", "Spider-Man: Homecoming", "Thor: Ragnarok", "Black Panther", "Avengers: Infinity War", "Ant-Man and the Wasp", "Captain Marvel", "Avengers: Endgame", "Spider-Man: Far From Home"]
     },
     methods: {
@@ -15,7 +15,6 @@ var app = new Vue (
         this.film = [];
         this.titoloPrincipale = "Titoli filtrati per '" + this.queryInput + "'";
 
-        {
           axios.get('https://api.themoviedb.org/3/search/multi', {
             params: {
               api_key: "d1f8d7650c9da069b8dc77f3607078db",
@@ -29,19 +28,21 @@ var app = new Vue (
 
             // Trasformazione voto da 10 a 5
             let voto = null;
-            for (var item in oggetto) {
-              voto = oggetto[item].vote_average;
-              let newVoto = voto / 2;
-              let decimale = newVoto % 1;
-              newVoto = Math.floor(newVoto);
-              if (decimale > 0.5) {
-                newVoto += 1;
+
+            for (var index = 0; index < oggetto.length; index++) {
+              if (oggetto[index].vote_average != undefined) {
+                voto = oggetto[index].vote_average;
+                let newVoto = voto / 2;
+                let decimale = newVoto % 1;
+                newVoto = Math.floor(newVoto);
+                if (decimale > 0.5) {
+                  newVoto += 1;
+                }
+                oggetto[index].vote_average = newVoto;
               }
-              oggetto[item].vote_average = newVoto;
             }
           })
           this.queryInput = "";
-        }
 
       }
     },
