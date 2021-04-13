@@ -95,7 +95,7 @@ main .description div.len-flag{
 main .description div.len-flag img.bandiera{
   margin-left: 15px;
 }
-main .description i{
+main .description h3 i{
   color: yellow;
 }
 .movieCard:hover img.poster{
@@ -115,6 +115,12 @@ main .containerMain .movieCard .description span{
   font-weight: lighter;
   font-size: 18px;
   color: grey;
+}
+main #add{
+  color: white;
+  position: absolute;
+  top: 8px;
+  right: 8px;
 }
 
 /* Media Query */
