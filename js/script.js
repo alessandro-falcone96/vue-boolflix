@@ -15,6 +15,7 @@ var app = new Vue (
         this.film = [];
         this.titoloPrincipale = "Titoli filtrati per '" + this.queryInput + "'";
 
+
           axios.get('https://api.themoviedb.org/3/search/multi', {
             params: {
               api_key: "d1f8d7650c9da069b8dc77f3607078db",
@@ -30,18 +31,17 @@ var app = new Vue (
             let voto = null;
 
             for (var index = 0; index < oggetto.length; index++) {
-              if (oggetto[index].vote_average != undefined) {
-                voto = oggetto[index].vote_average;
-                let newVoto = voto / 2;
-                let decimale = newVoto % 1;
-                newVoto = Math.floor(newVoto);
-                if (decimale > 0.5) {
-                  newVoto += 1;
-                }
-                oggetto[index].vote_average = newVoto;
+              voto = oggetto[index].vote_average;
+              let newVoto = voto / 2;
+              let decimale = newVoto % 1;
+              newVoto = Math.floor(newVoto);
+              if (decimale > 0.5) {
+                newVoto += 1;
               }
+              oggetto[index].vote_average = newVoto;
             }
           })
+
           this.queryInput = "";
 
       }
