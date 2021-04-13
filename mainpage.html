@@ -26,11 +26,7 @@
           <div>
 
             <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Serie TV</a></li>
-              <li><a href="#">Film</a></li>
-              <li><a href="#">Nuovi e Popolari</a></li>
-              <li><a href="#">La mia Lista</a></li>
+              <li v-for="(item, index) in menu"><a href="#" @click="change(index)" v-bind:class="{'active': item.isActive == 'true'}">{{item.name}}</a></li>
             </ul>
 
           </div>
@@ -53,10 +49,9 @@
         <div class="containerMain">
 
           <div v-for="oggetto in film[0]">
-            
             <div v-if="oggetto.known_for"></div>
 
-            <div v-else class="movieCard">
+            <div v-else class="movieCard" @click="toLista(oggetto)">
               <img class="poster fake" v-if="oggetto.poster_path == null" src="nonDisponibile.png">
               <img class="poster" v-else :src="link + oggetto.poster_path" :alt="oggetto.original_title">
 
