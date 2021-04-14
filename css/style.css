@@ -11,7 +11,6 @@ header{
 }
 header .containerHeader{
   display: flex;
-  justify-content: space-between;
   align-items: center;
   width: 95%;
   height: 100%;
@@ -83,4 +82,25 @@ main button{
 main button:hover{
   color: white;
   border: 1px solid white;
+}
+
+@media only screen and (min-width: 360px) and (orientation: portrait) {
+  header{
+    height: 18vh;
+  }
+  header .containerHeader{
+    justify-content: center;
+  }
+  main{
+    min-height: 85vh;
+  }
+  main .containerProfili{
+    flex-wrap: wrap;
+  }
+  main img{
+    height: 350px;
+  }
+  main h4{
+    font-size: 50px;
+  }
 }

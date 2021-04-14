@@ -27,6 +27,7 @@ var app = new Vue (
         }
       ],
       lista: [],
+      generi: null,
       lastIndex: 0,
       indexActive: 0,
       link: "https://image.tmdb.org/t/p/original/",
@@ -62,6 +63,25 @@ var app = new Vue (
           }
         })
         this.queryInput = "";
+
+        // // Creo lista generi
+        // axios.get('https://api.themoviedb.org/3/genre/movie/list', {
+        //   params: {
+        //     api_key: "d1f8d7650c9da069b8dc77f3607078db"
+        //   }
+        // })
+        // .then((risposta) => {
+        //
+        //   this.generi = risposta.data.genres;
+        //   // console.log(this.generi);
+        //   for (var i = 0; i < this.generi.length; i++) {
+        //     // console.log(this.generi[i].id);
+        //     console.log(Object.keys(this.generi[i]));
+        //     console.log(Object.values(this.generi[i]));
+        //   }
+        //
+        // })
+
 
     },
     methods: {

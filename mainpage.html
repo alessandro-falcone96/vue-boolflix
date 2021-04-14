@@ -21,9 +21,9 @@
       <header>
         <div class="containerHeader">
 
-          <a href="index.html"><img src="boolflix.png" alt=""></a>
+          <a id="logo" href="index.html"><img src="boolflix.png" alt=""></a>
 
-          <div>
+          <div id="menu">
 
             <ul>
               <li v-for="(item, index) in menu"><a href="#" @click="change(index)" v-bind:class="{'active': item.isActive == 'true'}">{{item.name}}</a></li>
@@ -31,7 +31,7 @@
 
           </div>
 
-          <div>
+          <div id="ricerca">
 
             <input type="text" name="" value="" placeholder="Inserisci titolo" v-model="queryInput" @keyup.13="search">
 
@@ -66,6 +66,9 @@
                   <div class="len-flag">
                     <h3><u>Language</u>: {{oggetto.original_language}}</h3>
                     <img v-if="oggetto.original_language == 'en'" class="bandiera" :src="flagLink + 'US' + flagLink2" alt="">
+                    <img v-if="oggetto.original_language == 'zh'" class="bandiera" :src="flagLink + 'CN' + flagLink2" alt="">
+                    <img v-if="oggetto.original_language == 'ja'" class="bandiera" :src="flagLink + 'JP' + flagLink2" alt="">
+                    <img v-if="oggetto.original_language == 'ko'" class="bandiera" :src="flagLink + 'KR' + flagLink2" alt="">
                     <img v-else class="bandiera" :src="flagLink + oggetto.original_language + flagLink2" alt="">
                   </div>
 

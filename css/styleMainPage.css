@@ -124,12 +124,53 @@ main #add{
 }
 
 /* Media Query */
-@media screen and (min-width: 992px) and (max-width: 1199px) {
-
-}
-@media screen and (min-width: 768px) and (max-width: 991px) {
-
-}
-@media screen and (max-width: 767px) {
-
+@media only screen and (min-width: 360px) and (orientation: portrait) {
+  header{
+    height: 18vh;
+  }
+  header .containerHeader{
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header #logo{
+    order: 1;
+    width: 60%;
+    height: 60%;
+  }
+  header #logo img{
+    height: 100%;
+    width: 100%;
+  }
+  header #menu{
+    order: 3;
+    width: 100%;
+  }
+  header ul li a{
+    font-size: 40px;
+  }
+  header #ricerca{
+    order: 2;
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+  header input{
+    font-size: 35px;
+    width: 100%;
+    margin-top: 5px;
+  }
+  header button{
+    font-size: 25px;
+    padding: 5px;
+    height: 45px;
+    margin-top: 5px;
+  }
+  main{
+    min-height: 85vh;
+  }
+  main h1{
+    font-size: 50px;
+  }
 }
