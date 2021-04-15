@@ -35,6 +35,23 @@ var app = new Vue (
       titoloPrincipale: "",
       flagLink: "https://www.countryflags.io/",
       flagLink2: "/shiny/32.png",
+      fotoProfilo: [
+        "img/profiloPaolo.png",
+        "img/profiloPatrizia.png",
+        "img/profiloAlessandro.png",
+        "img/profiloLello.png",
+        "img/profiloClara.png"
+      ],
+      nomiProfilo: [
+        "Paolo",
+        "Patrizia",
+        "Alessandro",
+        "Lello",
+        "Clara"
+      ],
+      fotoActive: 0,
+      isIndexVisible: true,
+      isMainPageVisible: false
     },
     mounted: function() {
       this.film = [];
@@ -285,32 +302,47 @@ var app = new Vue (
       },
       remove: function(film, index) {
         this.lista.splice(index, 1);
-      }
+      },
+      isVisible: function(index) {
+        if (this.isIndexVisible == true) {
+          this.isIndexVisible = false;
+        } else {
+          this.isIndexVisible = true;
+        }
+        if (this.isMainPageVisible == true) {
+          this.isMainPageVisible = false;
+        } else {
+          this.isMainPageVisible = true;
+        }
+
+        this.fotoActive = index;
+        // console.log(this.isIndexVisible);
+      },
     }
   }
 );
 
-var app2 = new Vue (
-  {
-    el: "#app2",
-    data: {
-      fotoProfilo: [
-        "img/profiloPaolo.png",
-        "img/profiloPatrizia.png",
-        "img/profiloAlessandro.png",
-        "img/profiloLello.png",
-        "img/profiloClara.png"
-      ],
-      nomiProfilo: [
-        "Paolo",
-        "Patrizia",
-        "Alessandro",
-        "Lello",
-        "Clara"
-      ]
-    },
-    methods: {
-
-    }
-  }
-);
+// var app2 = new Vue (
+//   {
+//     el: "#app2",
+//     data: {
+//       fotoProfilo: [
+//         "img/profiloPaolo.png",
+//         "img/profiloPatrizia.png",
+//         "img/profiloAlessandro.png",
+//         "img/profiloLello.png",
+//         "img/profiloClara.png"
+//       ],
+//       nomiProfilo: [
+//         "Paolo",
+//         "Patrizia",
+//         "Alessandro",
+//         "Lello",
+//         "Clara"
+//       ]
+//     },
+//     methods: {
+//
+//     }
+//   }
+// );

@@ -4,6 +4,8 @@
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
 }
+
+/* CSS INDEX PAGE */
 /* Header */
 header{
   background-color: black;
@@ -84,23 +86,141 @@ main button:hover{
   border: 1px solid white;
 }
 
-@media only screen and (min-width: 360px) and (orientation: portrait) {
-  header{
-    height: 18vh;
-  }
-  header .containerHeader{
-    justify-content: center;
-  }
-  main{
-    min-height: 85vh;
-  }
-  main .containerProfili{
-    flex-wrap: wrap;
-  }
-  main img{
-    height: 350px;
-  }
-  main h4{
-    font-size: 50px;
-  }
+
+/* CSS MAIN PAGE */
+/* Header */
+header{
+  background-color: black;
+  height: 10vh;
+}
+header .containerHeader{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  height: 100%;
+  margin: auto;
+}
+header #logo{
+  /* border: 1px solid blue; */
+}
+header a{
+  height: 70%;
+  cursor: pointer;
+}
+header img{
+  height: 100%;
+}
+header #menu{
+  /* border: 1px solid green; */
+}
+header ul li{
+  display: inline-block;
+  padding: 0px 10px;
+}
+header ul li a{
+  color: lightgrey;
+  text-decoration: none;
+}
+header #ricerca{
+  /* border: 1px solid red; */
+  display: flex;
+  align-items: center;
+}
+header #ricerca img{
+  height: 35px;
+  border-radius: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+header input{
+  padding: 5px;
+  width: 200px;
+}
+header button{
+  height: 29px;
+  padding: 2px 3px;
+}
+.active{
+  color: white;
+}
+
+/* Main */
+main{
+  background-color: #383838;
+  min-height: 90vh;
+}
+main h1{
+  text-align: center;
+  padding-top: 30px;
+}
+main .containerMain{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 30px 0px 100px 0px;
+}
+
+main .containerMain .movieCard{
+  width: 200px;
+  height: 300px;
+  border: 1px solid white;
+  margin: 10px 5px;
+  position: relative;
+}
+main .containerMain .movieCard img.poster{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: .7s ease;
+}
+main .containerMain .movieCard img.fake{
+  object-fit: contain;
+}
+main .description{
+  color: white;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  overflow: auto;
+  transition: .7s ease;
+  padding: 10px;
+}
+main .description div.len-flag{
+  display: flex;
+  align-items: center;
+}
+main .description div.len-flag img.bandiera{
+  margin-left: 15px;
+}
+main .description h3 i{
+  color: yellow;
+}
+.movieCard:hover img.poster{
+  opacity: 0;
+}
+.movieCard:hover .description{
+  opacity: 1;
+}
+main .containerMain .movieCard{
+  cursor: pointer;
+}
+main .containerMain .movieCard .description h3{
+  font-weight: bold;
+  padding: 3px 0px;
+}
+main .containerMain .movieCard .description span{
+  font-weight: lighter;
+  font-size: 18px;
+  color: grey;
+}
+main #add{
+  color: white;
+  position: absolute;
+  top: 8px;
+  right: 8px;
 }
