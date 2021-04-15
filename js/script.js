@@ -7,15 +7,21 @@ var app = new Vue (
       menu: [
         {
           name: "Home",
-          isActive: "true"
+          isActive: "true",
+          categorySearch: "multi",
+          queryInitial: "Harry Potter"
         },
         {
           name: "Serie TV",
-          isActive: "false"
+          isActive: "false",
+          categorySearch: "tv",
+          queryInitial: "Game of Thrones"
         },
         {
           name: "Film",
-          isActive: "false"
+          isActive: "false",
+          categorySearch: "movie",
+          queryInitial: "Avengers"
         },
         {
           name: "Nuovi e Popolari",
@@ -27,7 +33,6 @@ var app = new Vue (
         }
       ],
       lista: [],
-      generi: null,
       lastIndex: 0,
       indexActive: 0,
       link: "https://image.tmdb.org/t/p/original/",
@@ -54,245 +59,62 @@ var app = new Vue (
       isMainPageVisible: false
     },
     mounted: function() {
-      this.film = [];
-      this.titoloPrincipale = "Titoli nella Home";
-        axios.get('https://api.themoviedb.org/3/search/multi', {
+      this.searchDatabaseBasic(0);
+    },
+    methods: {
+      searchDatabaseBasic: function(index) {
+        this.film = [];
+        this.titoloPrincipale = this.menu[index].name;
+
+        axios.get('https://api.themoviedb.org/3/search/' + this.menu[index].categorySearch, {
           params: {
             api_key: "d1f8d7650c9da069b8dc77f3607078db",
-            query: "Harry Potter"
+            query: this.menu[index].queryInitial
           }
         })
         .then((risposta) => {
           var oggetto = risposta.data.results;
-          this.film.push(oggetto);
-
-          // Trasformazione voto da 10 a 5
-          let voto = null;
-          for (var index = 0; index < oggetto.length; index++) {
-            voto = oggetto[index].vote_average;
-            let newVoto = voto / 2;
-            let decimale = newVoto % 1;
-            newVoto = Math.floor(newVoto);
-            if (decimale > 0.5) {
-              newVoto += 1;
-            }
-            oggetto[index].vote_average = newVoto;
-          }
+          this.transformVote(oggetto);
+          return (oggetto);
         })
         this.queryInput = "";
-
-        // // Creo lista generi
-        // axios.get('https://api.themoviedb.org/3/genre/movie/list', {
-        //   params: {
-        //     api_key: "d1f8d7650c9da069b8dc77f3607078db"
-        //   }
-        // })
-        // .then((risposta) => {
-        //
-        //   this.generi = risposta.data.genres;
-        //   // console.log(this.generi);
-        //   for (var i = 0; i < this.generi.length; i++) {
-        //     // console.log(this.generi[i].id);
-        //     console.log(Object.keys(this.generi[i]));
-        //     console.log(Object.values(this.generi[i]));
-        //   }
-        //
-        // })
-
-
-    },
-    methods: {
-      search: function() {
-          if (this.menu[this.indexActive].name == 'Film') {
-            this.film = [];
-            this.titoloPrincipale = "Titoli filtrati per '" + this.queryInput + "'";
-              axios.get('https://api.themoviedb.org/3/search/movie', {
-                params: {
-                  api_key: "d1f8d7650c9da069b8dc77f3607078db",
-                  query: this.queryInput
-                }
-              })
-              .then((risposta) => {
-                var oggetto = risposta.data.results;
-                this.film.push(oggetto);
-
-                // Trasformazione voto da 10 a 5
-                let voto = null;
-                for (var index = 0; index < oggetto.length; index++) {
-                  voto = oggetto[index].vote_average;
-                  let newVoto = voto / 2;
-                  let decimale = newVoto % 1;
-                  newVoto = Math.floor(newVoto);
-                  if (decimale > 0.5) {
-                    newVoto += 1;
-                  }
-                  oggetto[index].vote_average = newVoto;
-                }
-              })
-              this.queryInput = "";
-
-          } else if (this.menu[this.indexActive].name == 'Serie TV') {
-            this.film = [];
-            this.titoloPrincipale = "Titoli filtrati per '" + this.queryInput + "'";
-              axios.get('https://api.themoviedb.org/3/search/tv', {
-                params: {
-                  api_key: "d1f8d7650c9da069b8dc77f3607078db",
-                  query: this.queryInput
-                }
-              })
-              .then((risposta) => {
-                var oggetto = risposta.data.results;
-                this.film.push(oggetto);
-
-                // Trasformazione voto da 10 a 5
-                let voto = null;
-                for (var index = 0; index < oggetto.length; index++) {
-                  voto = oggetto[index].vote_average;
-                  let newVoto = voto / 2;
-                  let decimale = newVoto % 1;
-                  newVoto = Math.floor(newVoto);
-                  if (decimale > 0.5) {
-                    newVoto += 1;
-                  }
-                  oggetto[index].vote_average = newVoto;
-                }
-              })
-              this.queryInput = "";
-          } else {
-            this.film = [];
-            this.titoloPrincipale = "Titoli filtrati per '" + this.queryInput + "'";
-              axios.get('https://api.themoviedb.org/3/search/multi', {
-                params: {
-                  api_key: "d1f8d7650c9da069b8dc77f3607078db",
-                  query: this.queryInput
-                }
-              })
-              .then((risposta) => {
-                var oggetto = risposta.data.results;
-                this.film.push(oggetto);
-
-                // Trasformazione voto da 10 a 5
-                let voto = null;
-                for (var index = 0; index < oggetto.length; index++) {
-                  voto = oggetto[index].vote_average;
-                  let newVoto = voto / 2;
-                  let decimale = newVoto % 1;
-                  newVoto = Math.floor(newVoto);
-                  if (decimale > 0.5) {
-                    newVoto += 1;
-                  }
-                  oggetto[index].vote_average = newVoto;
-                }
-              })
-              this.queryInput = "";
-          }
+      },
+      searchDatabaseAdvance: function() {
+        this.film = [];
+        this.titoloPrincipale = "Titoli filtrati per '" + this.queryInput + "'";
+          axios.get('https://api.themoviedb.org/3/search/' + this.menu[this.indexActive].categorySearch, {
+            params: {
+              api_key: "d1f8d7650c9da069b8dc77f3607078db",
+              query: this.queryInput
+            }
+          })
+          .then((risposta) => {
+            var oggetto = risposta.data.results;
+            this.transformVote(oggetto);
+            return (oggetto);
+          })
+          this.queryInput = "";
       },
       change: function(index) {
+
         // Aggiorno gli Index
         this.menu[this.lastIndex].isActive = 'false';
-        // console.log(this.menu[this.lastIndex].isActive);
         this.lastIndex = index;
         this.menu[index].isActive = 'true';
         this.indexActive = index;
-        // console.log(this.menu[index].isActive);
-
 
         // Aggiorno i film a schermo
         if (this.menu[index].name == 'Home') {
-          this.film = [];
-          this.titoloPrincipale = "Titoli nella Home";
-
-            axios.get('https://api.themoviedb.org/3/search/multi', {
-              params: {
-                api_key: "d1f8d7650c9da069b8dc77f3607078db",
-                query: "Harry Potter"
-              }
-            })
-            .then((risposta) => {
-
-              var oggetto = risposta.data.results;
-              this.film.push(oggetto);
-
-              // Trasformazione voto da 10 a 5
-              let voto = null;
-
-              for (var index = 0; index < oggetto.length; index++) {
-                voto = oggetto[index].vote_average;
-                let newVoto = voto / 2;
-                let decimale = newVoto % 1;
-                newVoto = Math.floor(newVoto);
-                if (decimale > 0.5) {
-                  newVoto += 1;
-                }
-                oggetto[index].vote_average = newVoto;
-              }
-            })
-            this.queryInput = "";
-
-
+          this.searchDatabaseBasic(index);
         } else if (this.menu[index].name == 'Serie TV') {
-          this.film = [];
-          this.titoloPrincipale = "Titoli Serie TV";
-            axios.get('https://api.themoviedb.org/3/search/tv', {
-              params: {
-                api_key: "d1f8d7650c9da069b8dc77f3607078db",
-                query: "Game of Thrones"
-              }
-            })
-            .then((risposta) => {
-              var oggetto = risposta.data.results;
-              this.film.push(oggetto);
-
-              // Trasformazione voto da 10 a 5
-              let voto = null;
-              for (var index = 0; index < oggetto.length; index++) {
-                voto = oggetto[index].vote_average;
-                let newVoto = voto / 2;
-                let decimale = newVoto % 1;
-                newVoto = Math.floor(newVoto);
-                if (decimale > 0.5) {
-                  newVoto += 1;
-                }
-                oggetto[index].vote_average = newVoto;
-              }
-            })
-            this.queryInput = "";
-
+          this.searchDatabaseBasic(index);
         } else if (this.menu[index].name == 'Film') {
-          this.film = [];
-          this.titoloPrincipale = "Titoli Film";
-            axios.get('https://api.themoviedb.org/3/search/movie', {
-              params: {
-                api_key: "d1f8d7650c9da069b8dc77f3607078db",
-                query: "Avengers"
-              }
-            })
-            .then((risposta) => {
-              var oggetto = risposta.data.results;
-              this.film.push(oggetto);
-
-              // Trasformazione voto da 10 a 5
-              let voto = null;
-              for (var index = 0; index < oggetto.length; index++) {
-                voto = oggetto[index].vote_average;
-                let newVoto = voto / 2;
-                let decimale = newVoto % 1;
-                newVoto = Math.floor(newVoto);
-                if (decimale > 0.5) {
-                  newVoto += 1;
-                }
-                oggetto[index].vote_average = newVoto;
-              }
-            })
-            this.queryInput = "";
-
+          this.searchDatabaseBasic(index);
         } else if (this.menu[index].name == 'La mia Lista') {
           this.film = [];
           this.titoloPrincipale = "La mia Lista";
           this.film.push(this.lista);
         }
-
-
 
       },
       toLista: function(film) {
@@ -314,35 +136,25 @@ var app = new Vue (
         } else {
           this.isMainPageVisible = true;
         }
-
         this.fotoActive = index;
-        // console.log(this.isIndexVisible);
+      },
+      transformVote: function(oggetto) {
+        this.film.push(oggetto);
+
+        // Trasformazione voto da 10 a 5
+        let voto = null;
+        for (var index = 0; index < oggetto.length; index++) {
+          voto = oggetto[index].vote_average;
+          let newVoto = voto / 2;
+          let decimale = newVoto % 1;
+          newVoto = Math.floor(newVoto);
+          if (decimale > 0.5) {
+            newVoto += 1;
+          }
+          oggetto[index].vote_average = newVoto;
+        }
+        return oggetto;
       },
     }
   }
 );
-
-// var app2 = new Vue (
-//   {
-//     el: "#app2",
-//     data: {
-//       fotoProfilo: [
-//         "img/profiloPaolo.png",
-//         "img/profiloPatrizia.png",
-//         "img/profiloAlessandro.png",
-//         "img/profiloLello.png",
-//         "img/profiloClara.png"
-//       ],
-//       nomiProfilo: [
-//         "Paolo",
-//         "Patrizia",
-//         "Alessandro",
-//         "Lello",
-//         "Clara"
-//       ]
-//     },
-//     methods: {
-//
-//     }
-//   }
-// );

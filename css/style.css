@@ -230,3 +230,82 @@ main #add{
   top: 8px;
   right: 8px;
 }
+
+
+/* Media Query */
+
+@media only screen and (min-width: 360px) and (orientation: portrait) {
+  /* INDEX */
+  .containerIndex header{
+    min-height: 18vh;
+  }
+  .containerIndex header .containerHeader{
+    justify-content: center;
+  }
+  .containerIndex main{
+    min-height: 82vh;
+  }
+  .containerIndex main .containerProfili{
+    flex-wrap: wrap;
+  }
+  .containerIndex main img{
+    height: 350px;
+  }
+  .containerIndex main h4{
+    font-size: 50px;
+  }
+
+  /* MAIN PAGE */
+  .containerMainPage header{
+    min-height: 18vh;
+  }
+  .containerMainPage header .containerHeader{
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .containerMainPage header #logo{
+    order: 1;
+    width: 60%;
+    height: 60%;
+  }
+  .containerMainPage header #logo img{
+    height: 100%;
+    width: 100%;
+  }
+  .containerMainPage header #menu{
+    order: 3;
+    width: 100%;
+  }
+  .containerMainPage header ul li a{
+    font-size: 40px;
+  }
+  .containerMainPage header #ricerca{
+    order: 2;
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+  .containerMainPage header input{
+    font-size: 35px;
+    width: 80%;
+    margin-top: 5px;
+  }
+  .containerMainPage header button{
+    font-size: 25px;
+    padding: 5px;
+    height: 45px;
+    margin-top: 5px;
+  }
+  .containerMainPage header #ricerca a img{
+    height: 45px;
+    margin-top: 5px;
+  }
+  .containerMainPage main{
+    min-height: 82vh;
+  }
+  .containerMainPage main h1{
+    font-size: 50px;
+  }
+}

@@ -72,9 +72,9 @@
 
             <div id="ricerca">
 
-              <input type="text" name="" value="" placeholder="Inserisci titolo" v-model="queryInput" @keyup.13="search">
+              <input type="text" name="" value="" placeholder="Inserisci titolo" v-model="queryInput" @keyup.13="searchDatabaseAdvance">
 
-              <button type="button" name="button" @click="search">Cerca</button>
+              <button type="button" name="button" @click="searchDatabaseAdvance">Cerca</button>
 
               <a><img :src="fotoProfilo[fotoActive]" alt=""></a>
 
