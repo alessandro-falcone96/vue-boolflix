@@ -56,7 +56,8 @@ var app = new Vue (
       ],
       fotoActive: 0,
       isIndexVisible: true,
-      isMainPageVisible: false
+      isMainPageVisible: false,
+      isInputSearchVisible: false
     },
     mounted: function() {
       this.searchDatabaseBasic(0);
@@ -155,6 +156,13 @@ var app = new Vue (
         }
         return oggetto;
       },
+      iconaRicercaVisible: function() {
+        if (this.isInputSearchVisible == true) {
+          this.isInputSearchVisible = false;
+        } else {
+          this.isInputSearchVisible = true;
+        }
+      }
     }
   }
 );

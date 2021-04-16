@@ -72,11 +72,15 @@
 
             <div id="ricerca">
 
-              <input type="text" name="" value="" placeholder="Inserisci titolo" v-model="queryInput" @keyup.13="searchDatabaseAdvance">
+              <input type="text" name="" value="" placeholder="Inserisci titolo" v-model="queryInput" @keyup.13="searchDatabaseAdvance" v-if="isInputSearchVisible == true">
+
+              <button type="button" id="iconaRicerca" @click="iconaRicercaVisible">
+                <i class="fas fa-search fa-lg"></i>
+              </button>
 
               <button type="button" name="button" @click="searchDatabaseAdvance">Cerca</button>
 
-              <a><img :src="fotoProfilo[fotoActive]" alt=""></a>
+              <a><img :src="fotoProfilo[fotoActive]" alt="" @click="isVisible"></a>
 
             </div>
 
@@ -102,10 +106,10 @@
 
                   <div>
 
-                    <h3 class="title"><u>Title</u>: <span>{{oggetto.title}} {{oggetto.name}}</span></h3>
-                    <h3><u>Original Title</u>: <span>{{oggetto.original_title}} {{oggetto.original_name}}</span></h3>
+                    <h3 class="title">Title: <span>{{oggetto.title}} {{oggetto.name}}</span></h3>
+                    <h3>Original Title: <span>{{oggetto.original_title}} {{oggetto.original_name}}</span></h3>
                     <div class="len-flag">
-                      <h3><u>Language</u>: {{oggetto.original_language}}</h3>
+                      <h3>Language: <span>{{oggetto.original_language}}</span></h3>
                       <img v-if="oggetto.original_language == 'en'" class="bandiera" :src="flagLink + 'US' + flagLink2" alt="">
                       <img v-if="oggetto.original_language == 'zh'" class="bandiera" :src="flagLink + 'CN' + flagLink2" alt="">
                       <img v-if="oggetto.original_language == 'ja'" class="bandiera" :src="flagLink + 'JP' + flagLink2" alt="">
@@ -113,9 +117,9 @@
                       <img v-else class="bandiera" :src="flagLink + oggetto.original_language + flagLink2" alt="">
                     </div>
 
-                    <h3><u>Vote</u>: <span v-for="n in oggetto.vote_average"><i class="fas fa-star"></i></span><span v-for="n in (5 - oggetto.vote_average)"><i class="far fa-star"></i></span></h3>
-                    <h3><u>Type</u>: <span>{{oggetto.media_type}}</span></h3>
-                    <h3><u>Overview</u>: <span>{{oggetto.overview}}</span></h3>
+                    <h3>Vote: <span v-for="n in oggetto.vote_average"><i class="fas fa-star"></i></span><span v-for="n in (5 - oggetto.vote_average)"><i class="far fa-star"></i></span></h3>
+                    <h3>Type: <span>{{oggetto.media_type}}</span></h3>
+                    <h3>Overview: <span>{{oggetto.overview}}</span></h3>
 
                   </div>
 

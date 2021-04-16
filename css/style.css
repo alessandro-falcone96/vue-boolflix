@@ -87,11 +87,15 @@ main button:hover{
 }
 
 
+
 /* CSS MAIN PAGE */
 /* Header */
 header{
   background-color: black;
   height: 10vh;
+}
+.containerMainPage header .containerHeader{
+  position: relative;
 }
 header .containerHeader{
   display: flex;
@@ -112,7 +116,9 @@ header img{
   height: 100%;
 }
 header #menu{
-  /* border: 1px solid green; */
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
 }
 header ul li{
   display: inline-block;
@@ -133,12 +139,20 @@ header #ricerca img{
   margin-left: 5px;
   cursor: pointer;
 }
+header #ricerca #iconaRicerca{
+  padding: 5px;
+  margin-right: 3px;
+}
 header input{
   padding: 5px;
-  width: 200px;
+  width: 150px;
 }
 header button{
-  height: 29px;
+  color: black;
+  background-color: white;
+  border: 1px solid grey;
+  cursor: pointer;
+  height: 30px;
   padding: 2px 3px;
 }
 .active{
@@ -209,9 +223,6 @@ main .description h3 i{
 .movieCard:hover .description{
   opacity: 1;
 }
-main .containerMain .movieCard{
-  cursor: pointer;
-}
 main .containerMain .movieCard .description h3.title{
   width: 90%;
 }
@@ -224,11 +235,16 @@ main .containerMain .movieCard .description span{
   font-size: 18px;
   color: grey;
 }
+main .containerMain .movieCard .description .len-flag span{
+  margin-left: 5px;
+  text-transform: uppercase;
+}
 main #add{
   color: white;
   position: absolute;
   top: 8px;
   right: 8px;
+  cursor: pointer;
 }
 
 
